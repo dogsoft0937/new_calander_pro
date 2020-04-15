@@ -4,8 +4,8 @@ import { Loading_logo } from '../images/Icon';
 
 
 const Wrapper=styled.div`
-    position:absolute;
-    bottom:0;
+    position:fixed;
+    bottom:0px;
     width:100%;
     padding:10px;
     color:white;

@@ -7,7 +7,11 @@ import Header from './Header';
 import Footer from "./Footer";
 import MainContent from './MainContent';
 
-
+const Container=styled.div`
+  display:flex;
+  min-height:100vh;
+  flex-direction:column;
+`;
 export default () => {
   const [Auth,setAuth]=useState(false);
   const successAuth=()=>{
@@ -17,9 +21,11 @@ export default () => {
     <ThemeProvider theme={Theme}>
       <>
         <GlobalStyles />
+          <Container>
             <Header Auth={Auth} successAuth={successAuth} />
             <MainContent Auth={Auth}/>
             <Footer/>
+          </Container>
       </>
     </ThemeProvider>
   );
