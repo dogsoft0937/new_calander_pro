@@ -6,6 +6,7 @@ import Theme from "../styles/Theme";
 import Header from './Header';
 import Footer from "./Footer";
 import MainContent from './MainContent';
+import Calendar from './Calendar';
 
 const Container=styled.div`
   display:flex;
