@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {Right_button,Left_button} from "../images/Icon";
 import Calendar from './Calendar';
 import Loader from './Loader';
 
-
-const Year = styled.span`
-    position:absolute;
-    font-wieght:600;
-    font-size:25px;
-    top:-40px;
-`;
 const Welcome_msg = styled.span`
     font-weight:600;
     font-size:50px;
-`;
-const Calander=styled.div`
-
 `;
 const NewWrapper=styled.div`
     display:flex;
@@ -25,26 +14,14 @@ const NewWrapper=styled.div`
     max-width:100%;
     margin-top:15%;
 `;
-// const Button=styled.div`
-//     position:absolute;
-//     curosr:pointer;
-//     &:not(last-child){left:-50px};
-// `;
-// const Wrapper=styled.div`
-//     display:flex;
-//     max-width:50%;
-//     justify-content:center;
-//     text-align:center;
-//     align-items:center;
-// `;
 
 function MainContent(props) {
-    const [Loading,setLoading]= useState(false);
-    const year_data="{year_data}";
+    const [Loading,setLoading]= useState(true);
     const about_data="{about_data}";
     setTimeout(()=>{setLoading(true)},3000);
     return (
         <>
+        {/* {Loading ? */}
         {props.Auth&&Loading ? 
         // <Wrapper>
         //     <Year>{year_data}</Year>

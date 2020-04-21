@@ -1,7 +1,24 @@
 import React,{useState,useEffect} from 'react';
 import '../styles/Calendar.scss';
 import moment, { Moment as MomentTypes } from 'moment';
+import {Right_button,Left_button} from '../images/Icon';
+import styled from 'styled-components';
 
+
+const Button=styled.div`
+  cursor:pointer;
+  &:first-child{
+    margin-right:450px;
+  }
+  &:last-child
+  {
+    margin-left:450px;
+  }
+`;
+const Heading=styled.div`
+  display:flex;
+  align-items:center;
+`;
 function Calendar() {
   function generate(params=0) {
     let today=""
@@ -25,6 +42,7 @@ function Calendar() {
             
               return (
                 <div className={`box  ${isSelected} ${isGrayed}`} key={i}>
+                  {/* 링크 current.format('MMDD') */}
                   <span className={`text`}>{current.format('D')}</span>
                 </div>
               )
@@ -38,24 +56,35 @@ function Calendar() {
   const [params,setParams]=useState(0);
   const [test,setTest]=useState(generate());
   const [current,setCurrent]=useState(moment().format('YYYY-MM'));
-  const changeDate=(e)=>{
-    if(e.target.name==="pre"){
-      setParams(params-1);
-      setTest(generate(params));
-      setCurrent(moment().subtract(Math.abs(params),'months').format('YYYY-MM'));
-    }else{
-      setParams(params+1);
-      setTest(generate(params));
+  useEffect(()=>{
+    console.log(params);
+    setTest(generate(params));
+    if(params>=0){
       setCurrent(moment().add(params,'months').format('YYYY-MM'));
+    }else{
+      setCurrent(moment().subtract(Math.abs(params),'months').format('YYYY-MM'));
     }
+  },[params])
+  const changeDate=(e)=>{
+    var tmp=0;
+    var data=e.target.parentNode.parentNode.id
+    if(data==="pre"){
+      tmp = params-1
+    }else if(data==="next"){
+      tmp = params+1;
+    }
+    setParams(tmp);
   }
   return (
     <div className="Calendar">
       <div className="head">
-      <button onClick={changeDate} name="pre">전</button>
+      <Heading>
+      <Button onClick={changeDate} id="pre"><Left_button size={40}/></Button>
       <span className="title">{current}</span>  
-      <button onClick={changeDate} name="nex">후</button>
+      <Button onClick={changeDate} id="next"><Right_button size={40}/></Button>
+      </Heading>
       </div>
+      
       <div className="body">
         <div className="row">
           <div className="box">

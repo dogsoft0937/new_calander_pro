@@ -4,9 +4,7 @@ import { HashRouter as Router } from "react-router-dom";
 import GlobalStyles from "../styles/GlobalStyles";
 import Theme from "../styles/Theme";
 import Header from './Header';
-import Footer from "./Footer";
 import MainContent from './MainContent';
-import Calendar from './Calendar';
 
 const Container=styled.div`
   display:flex;
@@ -25,7 +23,6 @@ export default () => {
           <Container>
             <Header Auth={Auth} successAuth={successAuth} />
             <MainContent Auth={Auth}/>
-            <Footer/>
           </Container>
       </>
     </ThemeProvider>
